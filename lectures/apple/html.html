@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="alert-box" id="alert">
+      <p id="title">alert 박스</p>
+      <button id="close">X</button>
+    </div>
+    <button onclick="알림창관리('아이디를 입력해주세요')">버튼1</button>
+    <button onclick="알림창관리('비밀번호를 입력해주세요')">버튼2</button>
+
+    <script>
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("alert").style.display = "none";
+      });
+
+      function 알림창관리(파라미터) {
+        document.getElementById("title").innerHTML = 파라미터;
+        document.getElementById("alert").style.display = "block";
+      }
+
+      //   function 알림창관리(파라미터) {
+      // document.getElementById("alert").style.display = 파라미터;
+
+      //   function 알림창닫기() {
+      // document.getElementById("alert").style.display = "none";
+      //   }
+    </script>
+  </body>
+</html>
