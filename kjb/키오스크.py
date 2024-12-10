@@ -85,7 +85,7 @@ now = datetime.datetime.now() #시간
 start_morning = datetime.datetime(now.year, now.month, now.day + 0, 4, 0)
 end_morning = datetime.datetime(now.year, now.month, now.day + 0, 10, 30)
 start_lunch = datetime.datetime(now.year, now.month, now.day + 0, 10, 30)
-end_lunch = datetime.datetime(now.year, now.month, now.day + 0, 14, 0)
+end_lunch = datetime.datetime(now.year, now.month, now.day +0 ,14, 00)
 next_morning1 = datetime.datetime(now.year, now.month, now.day + 0, 10, 30)
 next_morning = datetime.datetime(now.year, now.month, now.day +1,4,0)
 print("현재시간", now.strftime("%H:%M:%S"))
@@ -93,17 +93,23 @@ print("현재시간", now.strftime("%H:%M:%S"))
 #메뉴 리스트 업데이트
 def printcategori():
     menu_list = []
-    if next_morning1<= now<=next_morning:  # 10:30 ~ 다음날04:00
-        menu_list.append("1.버거")
-        menu_list.append("7.해피밀")
-    elif start_lunch <= now <= end_lunch:  #10:30 ~ 14:00
-        menu_list.append("8.맥런치")
-    elif start_morning <= now<= end_morning:  #04:00~10:30
+
+    if start_morning <= now<= end_morning:  #04:00~10:30
         menu_list.append("9.맥모닝")
         menu_list.append("7.해피밀")
-    menu_list.extend(["2.해피스낵", "3.사이드", "4.디저트", "5.맥카페", "6.음료"]) # 항시추가
+        menu_list.extend(["2.해피스낵", "3.사이드", "4.디저트", "5.맥카페", "6.음료"])
+    elif start_lunch <= now <= end_lunch:  #10:30 ~ 14:00
+        menu_list.append("8.맥런치")
+        menu_list.append("7.해피밀")
+        menu_list.extend(["2.해피스낵", "3.사이드", "4.디저트", "5.맥카페", "6.음료"])
+    else:
+        menu_list.append("1.버거")
+        menu_list.append("7.해피밀")
+        menu_list.extend(["2.해피스낵", "3.사이드", "4.디저트", "5.맥카페", "6.음료"])
+     # 항시추가
     menu_list.sort() # 메뉴 목록 정렬
     return menu_list
+
 #시간대 카테고리 출력
 def printmenu_time():
     available_menue = printcategori()      #사용메뉴=카테고리에서
